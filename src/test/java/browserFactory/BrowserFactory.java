@@ -28,8 +28,8 @@ public class BrowserFactory {
 
     public final void setDriver(String browser) {
         ChromeOptions options = new ChromeOptions();
-        if(browser==null)
-            browser="chrome";
+//        if(browser==null)
+//            browser="chrome";
         switch(browser.toLowerCase()) {
             case "chrome":
                 options.addArguments("--disable-plugins");
