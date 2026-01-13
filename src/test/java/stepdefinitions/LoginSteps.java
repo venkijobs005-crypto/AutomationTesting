@@ -26,12 +26,14 @@ public class LoginSteps {
     public void user_opens_the_url(String url) {
         driver.get(url);
         System.out.println("Chrome browser launched the url : " + url);
+        utilities.utilFunctions.takeStepScreenshot(driver,"launched");
     }
 
     @When("^user enters email as \"([^\"]*)\" and password as \"([^\"]*)\"$")
     public void user_enters_email_as_and_password_as(String userName, String password) {
         loginPage.setUserName(userName);
         loginPage.setPassword(password);
+        utilities.utilFunctions.takeStepScreenshot(driver,"logged_in");
     }
 
     @When("^user clicks on login$")
@@ -42,6 +44,7 @@ public class LoginSteps {
     @Then("^Page title should be \"([^\"]*)\"$")
     public void page_title_should_be(String title)  {
         if(driver.getPageSource().contains("Login was unsuccessful. ")) {
+            utilities.utilFunctions.takeStepScreenshot(driver,"logged_in_success");
             driver.close();
         }else {
             Assert.assertEquals(title,driver.getTitle());
