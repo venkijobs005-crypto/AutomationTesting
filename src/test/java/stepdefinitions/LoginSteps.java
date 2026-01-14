@@ -10,7 +10,15 @@ import org.openqa.selenium.WebDriver;
 import pageObject.LoginPage;
 
 public class LoginSteps {
-    BrowserFactory browserFactory = BrowserFactory.getInstance();
+    BrowserFactory browserFactory = null;
+    public LoginSteps(){
+
+    }
+
+    public LoginSteps(BrowserFactory browserFactory){
+        this.browserFactory=BrowserFactory.getInstance();
+    }
+
     public WebDriver driver;
     public LoginPage loginPage;
 
@@ -27,6 +35,7 @@ public class LoginSteps {
         driver.get(url);
         System.out.println("Chrome browser launched the url : " + url);
         utilities.utilFunctions.takeStepScreenshot(driver,"launched");
+        System.out.println("New Commit");
     }
 
     @When("^user enters email as \"([^\"]*)\" and password as \"([^\"]*)\"$")
